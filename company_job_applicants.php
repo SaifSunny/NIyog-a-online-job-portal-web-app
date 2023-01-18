@@ -1,0 +1,245 @@
+<?php
+include_once("./database/config.php");
+date_default_timezone_set('Asia/Dhaka');
+#starting session
+
+session_start();
+
+if (!isset($_SESSION['companyname'])) {
+    header("Location: company_login.php");
+}
+
+$username = $_SESSION['companyname'];
+
+$sql = "SELECT * FROM company WHERE username='$username'";
+$result = mysqli_query($conn, $sql);
+$row=mysqli_fetch_assoc($result);
+
+$company_id=$row['company_id'];
+$company_img=$row['company_img'];
+$company_name=$row['company_name'];
+$website=$row['website'];
+$established=$row['established'];
+$contact=$row['contact'];
+$email=$row['email'];
+$address=$row['address']." ".$row['city']."-".$row['zip'];
+
+#setting session veriable
+$_SESSION['company_img'] = $company_img;
+$_SESSION['company_id'] = $row['company_id'];
+$_SESSION['company_name'] = $row['company_name'];
+
+$job_id = $_GET['job_id']; 
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Niyog - Job Finding Web Application</title>
+
+    <!--== Google Fonts ==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--== Bootstrap CSS ==-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--== Icofont Icon CSS ==-->
+    <link href="assets/fonts/icofont/icofont.min.css" rel="stylesheet" />
+    <!--== Swiper CSS ==-->
+    <link href="assets/css/swiper.min.css" rel="stylesheet" />
+    <!--== Fancybox Min CSS ==-->
+    <link href="assets/css/fancybox.min.css" rel="stylesheet" />
+    <!--== Aos Min CSS ==-->
+    <link href="assets/css/aos.min.css" rel="stylesheet" />
+
+    <!--== Main Style CSS ==-->
+    <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+
+    <!--wrapper start-->
+    <div class="wrapper">
+
+
+        <main class="main-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light"
+                        style="height:100vh;position:fixed;width:17%">
+                        <a href="company_home.php"
+                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+                            style="padding:4px 20px">
+                            <img class="logo-main" src="assets/img/logo-dark.png" alt="Logo" width="90%" />
+                        </a>
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                                <a href="company_home.php" class="nav-link link-dark">
+                                    <i class="fa fa-home"></i>
+                                    Home
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="company_jobs.php" class="nav-link active bg-success" aria-current="page">
+                                    <i class="fa-solid fa-clipboard"></i>
+                                    Job Posts
+                                </a>
+                            </li>
+                            <li>
+                                <a href="company_appointments.php" class="nav-link link-dark">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                    Job Shortlist
+                                </a>
+                            </li>
+                            <li>
+                                <a href="company_hire_history.php" class="nav-link link-dark">
+                                    <i class="fa-solid fa-address-card"></i>
+                                    Hiring History
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="dropdown">
+                            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                                id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/img/companies/<?php echo $company_img?>" alt="" width="40" height="40"
+                                    class="rounded-circle me-2">
+                                <strong><?php echo $username?></strong>
+                            </a>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+
+                                <li><a class="dropdown-item" href="company_profile.php"><i class="fa-solid fa-user"></i>
+                                        Profile</a></li>
+                                <hr>
+                                <li><a class="dropdown-item" href="logout.php"><i
+                                            class="fa-solid fa-right-from-bracket"></i>
+                                        Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <!--== Start Team Area Wrapper ==-->
+                    <section class="team-area team-inner2-area">
+                        <div class="container" style="padding:2%;margin-top:2%;padding-left:1%">
+                            <div class="row">
+                                <div class="col-10">
+                                    <h2 style="font-weight:600">Job Applicants</h2>
+                                    <p><a href="company_home.php">Home</a> / <a href="company_jobs.php">Job Posts</a> /
+                                        Applicants</p>
+                                </div>
+                            </div>
+                            <hr style="margin-bottom:40px">
+                            <div class="row">
+                                <?php 
+                                                $sql = "SELECT * FROM job_applicant where job_id = $job_id AND shortlisted <> 2";
+                                                $result = mysqli_query($conn, $sql);
+                                                if($result){
+                                                    while($row=mysqli_fetch_assoc($result)){
+                                                        $applicant_id=$row['sl'];
+                                                        $user_id=$row['user_id'];
+                                                        $shortlisted=$row['shortlisted'];
+
+                                                        $sql5 = "SELECT * FROM users where user_id = $user_id";
+                                                        $result5 = mysqli_query($conn, $sql5);
+                                                        $row5=mysqli_fetch_assoc($result5);
+                                                        $user_img=$row5['user_img'];
+                                                        $firstname=$row5['firstname'];
+                                                        $lastname=$row5['lastname'];
+                                                        $email=$row5['email'];
+                                                        $contact=$row5['contact'];
+                                                        ?>
+                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                    <!--== Start Team Item ==-->
+                                    <div class="team-item">
+                                        <a href="company_applicant_details.php?user_id=<?php echo $user_id?>&job_id=<?php echo $job_id?>">
+                                            <img src="assets/img/users/<?php echo $user_img?>" width="160" height="160"
+                                                alt="Image">
+                                        </a>
+                                        <div class="content">
+                                            <h4 class="title"><a
+                                                    href="company_applicant_details.php?user_id=<?php echo $user_id?>&job_id=<?php echo $job_id?>"><?php echo $firstname. " ".$lastname?></a>
+                                            </h4>
+                                            <h5 class="sub-title">Contact: <?php echo $contact?></h5>
+                                            <a class="btn-theme btn-white btn-sm"
+                                                href="company_applicant_details.php?user_id=<?php echo $user_id?>&job_id=<?php echo $job_id?>" style="margin-bottom:15px;">View
+                                                Profile</a>
+                                            <?php
+                                                if($shortlisted==1){
+                                            ?>
+                                            <a class="btn-warning btn-sm" style="padding: 5% 10%;font-weight:600">Shortlisted</a>
+                                            <?php
+                                                }else{
+                                            ?>
+                                            <a class="btn-theme btn-sm"
+                                                href="company_applicant_shortlist.php?id=<?php echo $applicant_id?>&job_id=<?php echo $job_id?>">Shortlist</a>
+                                            <?php
+                                                }
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                    <!--== End Team Item ==-->
+                                </div>
+                                <?php
+                                                    }
+                                                }
+                                ?>
+                            </div>
+                        </div>
+                    </section>
+                    <!--== End Team Area Wrapper ==-->
+                </div>
+            </div>
+
+
+
+        </main>
+
+    </div>
+
+    <!--=======================Javascript============================-->
+
+    <!--=== jQuery Modernizr Min Js ===-->
+    <script src="assets/js/modernizr.js"></script>
+    <!--=== jQuery Min Js ===-->
+    <script src="assets/js/jquery-main.js"></script>
+    <!--=== jQuery Migration Min Js ===-->
+    <script src="assets/js/jquery-migrate.js"></script>
+    <!--=== jQuery Popper Min Js ===-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--=== jQuery Bootstrap Min Js ===-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--=== jQuery Swiper Min Js ===-->
+    <script src="assets/js/swiper.min.js"></script>
+    <!--=== jQuery Fancybox Min Js ===-->
+    <script src="assets/js/fancybox.min.js"></script>
+    <!--=== jQuery Aos Min Js ===-->
+    <script src="assets/js/aos.min.js"></script>
+    <!--=== jQuery Counterup Min Js ===-->
+    <script src="assets/js/counterup.js"></script>
+    <!--=== jQuery Waypoint Js ===-->
+    <script src="assets/js/waypoint.js"></script>
+
+    <!--=== jQuery Custom Js ===-->
+    <script src="assets/js/custom.js"></script>
+
+</body>
+
+</html>
