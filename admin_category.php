@@ -175,7 +175,7 @@ $_SESSION['image'] = $admin_img;
                                                 <td><?php echo $description?></td>
 
                                                 <td><a href="admin_category_delete.php?id=<?php echo $id?>"
-                                                        class="btn btn-danger" style="padding-right:3px;"><i
+                                                        class="btn btn-danger" style="padding: 8px 0px 8px 10px;"><i
                                                             class="fa fa-trash"></i></a>
                                                 </td>
 

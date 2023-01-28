@@ -59,7 +59,7 @@ if (isset($_POST['submit_img'])) {
 
             if ($query_run2) {
                 echo "<script> alert('Profile Image Successfully Updated.');
-                window.location.href='user_profile.php';</script>";
+                window.location.href='user_cv.php';</script>";
             } 
             else {
                 $cls="danger";
@@ -430,7 +430,7 @@ if (isset($_POST['submit_skill'])) {
 
                                             <div class="candidate-details-content">
                                                 <?php 
-                                                    $sql = "SELECT * FROM user_education";
+                                                    $sql = "SELECT * FROM user_education where user_id=$user_id";
                                                     $result = mysqli_query($conn, $sql);
                                                     if($result){
                                                         while($row=mysqli_fetch_assoc($result)){
@@ -507,7 +507,7 @@ if (isset($_POST['submit_skill'])) {
                                             <h4 class="content-title">Work & Experience</h4>
                                             <div class="candidate-details-content">
                                                 <?php 
-                                                    $sql = "SELECT * FROM user_experience";
+                                                    $sql = "SELECT * FROM user_experience where user_id=$user_id";
                                                     $result = mysqli_query($conn, $sql);
                                                     if($result){
                                                         while($row=mysqli_fetch_assoc($result)){
@@ -629,7 +629,7 @@ if (isset($_POST['submit_skill'])) {
                                             <div class="widget-contact-form">
                                                 <ul class="team-details-list mb--0">
                                                     <?php 
-                                                    $sql = "SELECT * FROM user_skills";
+                                                    $sql = "SELECT * FROM user_skills where user_id=$user_id";
                                                     $result = mysqli_query($conn, $sql);
                                                     if($result){
                                                         while($row=mysqli_fetch_assoc($result)){

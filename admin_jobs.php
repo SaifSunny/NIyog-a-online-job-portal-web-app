@@ -169,7 +169,7 @@ $_SESSION['image'] = $admin_img;
                                                 $job_title=$row['job_title'];
                                                 $post_date=$row['post_date'];
                                                 $salary=$row['salary'];
-                                                $finalize_id=$row['finalize_id'];
+                                                $hired=$row['hired'];
 
                                                 $sql1 = "SELECT * FROM category where category_id = $category_id";
                                                 $result1 = mysqli_query($conn, $sql1);
@@ -181,7 +181,7 @@ $_SESSION['image'] = $admin_img;
                                                 $row2=mysqli_fetch_assoc($result2);
                                                 $company_name=$row2['company_name'];
 
-                                                if($finalize_id == 1){
+                                                if($hired == 1){
                                                     $type = "success";
                                                     $msg = "Hired";
                                                 }else{
@@ -203,7 +203,7 @@ $_SESSION['image'] = $admin_img;
                                                             class="btn btn-<?php echo $type?>"><?php echo $msg?></button></td>
 
                                                 <td><a href="admin_job_delete.php?id=<?php echo $id?>"
-                                                        class="btn btn-danger" style="padding-right:3px;"><i
+                                                        class="btn btn-danger" style="padding: 8px 0px 8px 10px;"><i
                                                             class="fa fa-trash"></i></a>
                                                 </td>
 

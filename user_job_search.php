@@ -156,7 +156,7 @@ $search_id = $_GET['category_id']
                                                 $date=$row['creation_date'];
                                                 $description=$row['description'];
 
-                                                $sql1 = "SELECT * from jobs where category_id = $id";
+                                                $sql1 = "SELECT * from jobs where hired=0 AND category_id = $id";
                                                 $result1 = mysqli_query($conn, $sql1);
                                                 $row_cnt = $result1->num_rows;
 
@@ -184,7 +184,7 @@ $search_id = $_GET['category_id']
 
 
                                 <?php 
-                                                $sql = "SELECT * FROM jobs order by job_id desc";
+                                                $sql = "SELECT * FROM jobs where hired=0 AND category_id = $id order by job_id desc";
                                                 $result = mysqli_query($conn, $sql);
                                                 if($result){
                                                     while($row=mysqli_fetch_assoc($result)){

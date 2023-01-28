@@ -39,10 +39,11 @@ $city=$row['city'];
 $zip=$row['zip'];
 $about=$row['about'];
 
-$sql2 = "SELECT * FROM job_applicant where job_id = $job_id";
+$sql2 = "SELECT * FROM job_applicant where job_id = $job_id and user_id=$user_id";
 $result2 = mysqli_query($conn, $sql2);
 $row2=mysqli_fetch_assoc($result2);
 $shortlisted=$row2['shortlisted'];
+echo $applicant_id=$row2['sl'];
 
 
 
@@ -211,7 +212,7 @@ $shortlisted=$row2['shortlisted'];
                                             <h4 class="content-title">Education</h4>
                                             <div class="candidate-details-content">
                                                 <?php 
-                                                    $sql = "SELECT * FROM user_education";
+                                                    $sql = "SELECT * FROM user_education  WHERE user_id='$user_id'";
                                                     $result = mysqli_query($conn, $sql);
                                                     if($result){
                                                         while($row=mysqli_fetch_assoc($result)){
@@ -238,7 +239,7 @@ $shortlisted=$row2['shortlisted'];
                                             <h4 class="content-title">Work & Experience</h4>
                                             <div class="candidate-details-content">
                                                 <?php 
-                                                    $sql = "SELECT * FROM user_experience";
+                                                    $sql = "SELECT * FROM user_experience  WHERE user_id='$user_id'";
                                                     $result = mysqli_query($conn, $sql);
                                                     if($result){
                                                         while($row=mysqli_fetch_assoc($result)){
@@ -322,7 +323,7 @@ $shortlisted=$row2['shortlisted'];
                                             <div class="widget-contact-form">
                                                 <ul class="team-details-list mb--0">
                                                     <?php 
-                                                    $sql = "SELECT * FROM user_skills";
+                                                    $sql = "SELECT * FROM user_skills  WHERE user_id='$user_id'";
                                                     $result = mysqli_query($conn, $sql);
                                                     if($result){
                                                         while($row=mysqli_fetch_assoc($result)){

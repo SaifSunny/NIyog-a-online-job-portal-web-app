@@ -220,15 +220,16 @@ $_SESSION['image'] = $admin_img;
                                                                     $job_type=$row['job_type'];
                                                                     $salary=$row['salary'];
                                                                     $level=$row['level'];
-                                                                    $finalize_id=$row['finalize_id'];
+                                                                    $hired=$row['hired'];
                                                                     $deadline=$row['deadline'];
                     
                                                                     $sql2 = "SELECT * FROM company where company_id=$company_id";
                                                                     $result2 = mysqli_query($conn, $sql2);
                                                                     $row2=mysqli_fetch_assoc($result2);
                                                                     $company_name=$row2['company_name'];
+                                                                    $company_img=$row2['company_img'];
                     
-                                                                    if($finalize_id == 1){
+                                                                    if($hired == 1){
                                                                         $type = "success";
                                                                         $msg = "Hired";
                                                                     }else{
@@ -238,6 +239,9 @@ $_SESSION['image'] = $admin_img;
                                                         ?>
 
                                                         <tr>
+                                                        <td><img src="./assets/img/companies/<?php echo $company_img ?>" alt=""
+                                                        width="60">
+                                                </td>
                                                             <td>
                                                                 <h5><?php echo $job_title?></h5> <p><?php echo $company_name?></p>
                                                             </td>
@@ -279,45 +283,39 @@ $_SESSION['image'] = $admin_img;
 
                                                     <tbody style="font-size:16px;">
                                                         <?php 
-                                                            $sql = "SELECT * FROM jobs order by job_id desc";
+                                                            $sql = "SELECT * FROM job_applicant order by sl desc";
                                                             $result = mysqli_query($conn, $sql);
                                                             if($result){
                                                                 while($row=mysqli_fetch_assoc($result)){
-                                                                    $id=$row['job_id'];
+                                                                    $id=$row['sl'];
 
+                                                                    $user_id=$row['user_id'];
                                                                     $company_id=$row['company_id'];
-                                                                    $category_id=$row['category_id'];
-                                                                    $job_title=$row['job_title'];
-                                                                    $job_type=$row['job_type'];
-                                                                    $level=$row['level'];
-                                                                    $salary=$row['salary'];
-                                                                    $finalize_id=$row['finalize_id'];
                     
-                                                                    $sql2 = "SELECT * FROM company order by company_id desc";
+                                                                    $sql2 = "SELECT * FROM users where user_id=$user_id ";
                                                                     $result2 = mysqli_query($conn, $sql2);
                                                                     $row2=mysqli_fetch_assoc($result2);
-                                                                    $company_name=$row2['company_name'];
+                                                                    $user_name=$row2['firstname']." ".$row2['lastname'];
+                                                                    $user_img=$row2['user_img'];
+
+                                                                    $sql3 = "SELECT * FROM company where company_id=$company_id";
+                                                                    $result3 = mysqli_query($conn, $sql3);
+                                                                    $row3=mysqli_fetch_assoc($result3);
+                                                                    $company_name=$row3['company_name'];
                     
-                                                                    if($finalize_id == 1){
-                                                                        $type = "success";
-                                                                        $msg = "Hired";
-                                                                    }else{
-                                                                        $type = "danger";
-                                                                        $msg = "To be Hired";
-                                                                    }
+                                                                  
                                                         ?>
 
                                                         <tr>
                                                             <td><?php echo $id ?></td>
+                                                            <td><img src="./assets/img/users/<?php echo $user_img ?>" alt=""
+                                                        width="60">
+                                                </td>
                                                             <td>
-                                                                <h5><?php echo $job_title?></h5> <p><?php echo $job_type?></p>
+                                                                <h5><?php echo $user_name?></h5> <p><?php echo $job_type?></p>
                                                             </td>
                                                             <td><?php echo $company_name ?></td>
-                                                            <td><?php echo $salary ?></td>
-                                                            <td><button
-                                                                    style="border-radius: 40px; padding:5px 14px; font-size:10px; font-weight:600"
-                                                                    class="btn btn-<?php echo $type?>"><?php echo $msg?></button>
-                                                            </td>
+                                                           
 
 
 

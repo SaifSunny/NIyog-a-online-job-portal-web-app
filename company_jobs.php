@@ -147,9 +147,9 @@ $_SESSION['company_name'] = $row['company_name'];
                             </div>
                             <hr style="margin-bottom:40px">
                             <div class="row">
-                                <div class="row justify-content-center align-items-center">
+                                <div class="row justify-content-start align-items-center">
 
-                                    <div class="col-12" style="margin-bottom:4%">
+                                    
                                         <?php 
                                                 $sql = "SELECT * FROM jobs where company_id = $company_id";
                                                 $result = mysqli_query($conn, $sql);
@@ -185,7 +185,7 @@ $_SESSION['company_name'] = $row['company_name'];
                                                         
 
                                             ?>
-                                        <div class="col-md-6 col-lg-4">
+                                        <div class="col-md-4 col-lg-4">
                                             <!--== Start Recent Job Item ==-->
                                             <div class="recent-job-item recent-job-style2-item">
                                                 <div class="main-content" style="margin:0">
@@ -245,13 +245,11 @@ $_SESSION['company_name'] = $row['company_name'];
                                             </div>
                                             <!--== End Recent Job Item ==-->
                                         </div>
-
-
                                         <?php 
                                                 }
                                             }
                                         ?>
-                                    </div>
+                                
                                 </div>
                             </div>
                         </div>

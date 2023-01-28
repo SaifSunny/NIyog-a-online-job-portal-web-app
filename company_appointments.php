@@ -182,8 +182,15 @@ $company_img=$row['company_img'];
                                                             style="border-radius: 40px; padding:5px 14px; font-size:10px; font-weight:600; margin-bottom:5px;"
                                                             class="btn btn-<?php echo $type?>"><?php echo $msg?></button></td>
 
-                                                <td><a href="company_job_shortlist.php?job_id=<?php echo $id?>"
+                                                <td>
+                                                    <?php
+                                                    if($hired==0){
+                                                    ?>
+                                                    <a href="company_job_shortlist.php?job_id=<?php echo $id?>"
                                                         class="btn btn-success">View Shortlist</a>
+                                                    <?php
+                                                    }else{}
+                                                    ?>
                                                 </td>
 
                                             </tr>

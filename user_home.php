@@ -2,7 +2,7 @@
 include_once("./database/config.php");
 date_default_timezone_set('Asia/Dhaka');
 #starting session
-
+error_reporting(0);
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -166,7 +166,7 @@ $_SESSION['user_name'] = $row['firstname']." ".$row['lastname'];
                                         <h4 class="card-title">Short Listed</h4>
                                         <div class="card-body text-center">
                                             <?php
-                                                $sql = "SELECT * from company";
+                                                $sql = "SELECT * from job_applicant where user_id =$user_id and shortlisted=1";
                                                 $result = mysqli_query($conn, $sql);
                                                 $row_cnt = $result->num_rows;
                                             ?>
@@ -180,7 +180,7 @@ $_SESSION['user_name'] = $row['firstname']." ".$row['lastname'];
                                         <h4 class="card-title">Upcomming Interviews</h4>
                                         <div class="card-body text-center">
                                             <?php
-                                                $sql = "SELECT * from jobs";
+                                                $sql = "SELECT * from job_meeting where user_id=$user_id";
                                                 $result = mysqli_query($conn, $sql);
                                                 $row_cnt = $result->num_rows;
                                             ?>

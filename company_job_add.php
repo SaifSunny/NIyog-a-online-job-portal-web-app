@@ -50,8 +50,8 @@ if(isset($_POST['submit'])){
 
             // Insert record
 
-            $query2 = "INSERT INTO jobs(company_id,`category_id`, `description`, `job_title`, `job_type`, `post_date`, `salary`, `experience`, `qualification`, `level`, `deadline`,company_id)
-            VALUES ('$company_id', '$category_id', '$description', '$job_title', '$job_type', '$date', '$salary', '$experience', '$qualification', '$level', '$deadline', '$company_id')";
+            $query2 = "INSERT INTO jobs(company_id,`category_id`, `description`, `job_title`, `job_type`, `post_date`, `salary`, `experience`, `qualification`, `level`, `deadline`)
+            VALUES ('$company_id', '$category_id', '$description', '$job_title', '$job_type', '$date', '$salary', '$experience', '$qualification', '$level', '$deadline')";
             $query_run2 = mysqli_query($conn, $query2);
             
             if ($query_run2) {
