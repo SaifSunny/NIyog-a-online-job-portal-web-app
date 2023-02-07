@@ -2,7 +2,7 @@
 include_once("./database/config.php");
 date_default_timezone_set('Asia/Dhaka');
 session_start();
-
+error_reporting(0);
 if (!isset($_SESSION['adminname'])) {
     header("Location: admin_login.php");
 }
