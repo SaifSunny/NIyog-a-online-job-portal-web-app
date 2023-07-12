@@ -1,3 +1,4 @@
+
 # NIyog-a-online-job-portal-web-app
 
 NIYOG is an online job portal web application that helps job seekers find suitable job opportunities and employers to hire the right talent. This web app is built using Bootstrap, PHP, and MySQL technologies.
@@ -34,5 +35,19 @@ variables with your MySQL database connection details.
 
 5. Access the web app using the URL of your web server.
 
+# Screenshot
+
+![Uploading Screenshot (760).png…]()
+![Uploading Screenshot (761).png…]()
+![Uploading Screenshot (762).png…]()
+![Uploading Screenshot (773).png…]()
+![Uploading Screenshot (764).png…]()
+![Uploading Screenshot (765).png…]()
+![Uploading Screenshot (766).png…]()
+![Uploading Screenshot (767).png…]()
+![Uploading Screenshot (768).png…]()
+![Uploading Screenshot (769).png…]()
+![Uploading Screenshot (770).png…]()
+![Screenshot (771)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/7bdcd408-4bee-4f58-aad0-3d2e33108833)
 # License
 NIYOG is released under the MIT License. You are free to use, modify, and distribute this web app for personal or commercial purposes.
