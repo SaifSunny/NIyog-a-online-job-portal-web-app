@@ -1,4 +1,3 @@
-
 # NIyog-a-online-job-portal-web-app
 
 NIYOG is an online job portal web application that helps job seekers find suitable job opportunities and employers to hire the right talent. This web app is built using Bootstrap, PHP, and MySQL technologies.
@@ -36,18 +35,13 @@ variables with your MySQL database connection details.
 5. Access the web app using the URL of your web server.
 
 # Screenshot
+![Screenshot (760)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/b4bbb248-b258-47c2-a3ad-081fb0a16520)
+![Screenshot (761)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/f1b199b8-a37c-46be-bfa9-c1c84321dc68)
+![Screenshot (763)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/cc310fe2-d612-4008-b259-bfcca1411922)
+![Screenshot (764)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/db6b157c-611d-42d5-8e8c-c4f2dd46bb9d)
+![Screenshot (769)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/29a7c19f-2487-473b-b04b-3b8c3e998360)
+![Screenshot (770)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/8313a51e-e068-4c8a-980b-ea27e128b7b5)
+![Screenshot (771)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/d754da1e-91d2-41bc-a428-be26fc04a0e1)
 
-![Uploading Screenshot (760).png…]()
-![Uploading Screenshot (761).png…]()
-![Uploading Screenshot (762).png…]()
-![Uploading Screenshot (773).png…]()
-![Uploading Screenshot (764).png…]()
-![Uploading Screenshot (765).png…]()
-![Uploading Screenshot (766).png…]()
-![Uploading Screenshot (767).png…]()
-![Uploading Screenshot (768).png…]()
-![Uploading Screenshot (769).png…]()
-![Uploading Screenshot (770).png…]()
-![Screenshot (771)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/7bdcd408-4bee-4f58-aad0-3d2e33108833)
 # License
 NIYOG is released under the MIT License. You are free to use, modify, and distribute this web app for personal or commercial purposes.
