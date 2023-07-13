@@ -24,9 +24,11 @@ Before installing NIYOG, you need to ensure that you have the following:
 To install NIYOG, follow these steps:
 
 1. Clone the NIYOG repository to your local machine: git clone https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app.git
+   
 2 Create a new MySQL database for NIYOG and import the niyog.sql file located in the database folder of the project directory.
 
-3 Configure the database connection by editing the config.php file located in the includes folder of the project directory. Replace the 
+3 Configure the database connection by editing the config.php file located in the includes folder of the project directory. 
+Replace the 
     DB_HOST, DB_USER, DB_PASSWORD, and DB_NAME 
 variables with your MySQL database connection details.
 
