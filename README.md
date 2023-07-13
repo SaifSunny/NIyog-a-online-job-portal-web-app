@@ -40,7 +40,9 @@ To install NIYOG, follow these steps:
    <li>Access the web app using the URL of your web server.
 </li>
 </ul>
+
 # Screenshot
+
 ![Screenshot (760)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/b4bbb248-b258-47c2-a3ad-081fb0a16520)
 ![Screenshot (761)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/f1b199b8-a37c-46be-bfa9-c1c84321dc68)
 ![Screenshot (763)](https://github.com/SaifSunny/NIyog-a-online-job-portal-web-app/assets/72490093/cc310fe2-d612-4008-b259-bfcca1411922)
